@@ -31,7 +31,7 @@ return (
 	<ScrollView>
 		<Text style={[styles.largeText, styles.textStyle]}> Cadastro de Alunos</Text>
 
-		<View style={styles.conteinerTextIput}>
+		<View style={styles.conteinerTextInput}>
 			<TextInput
 
 
@@ -44,7 +44,7 @@ return (
 
 		</View>
 
-		<View style={styles.conteinerTextIput}>
+		<View style={styles.conteinerTextInput}>
 			<TextInput
 
 
@@ -56,7 +56,7 @@ return (
 			/>
 		</View>
 
-		<View style={styles.conteinerTextIput}>
+		<View style={styles.conteinerTextInput}>
 			<TextInput
 
 
@@ -69,7 +69,7 @@ return (
 		</View>
 
 
-		<View style={styles.conteinerTextIput}>
+		<View style={styles.conteinerTextInput}>
 			<TextInput
 
 
@@ -82,7 +82,7 @@ return (
 		</View>
 
 
-		<View style={styles.conteinerTextIput}>
+		<View style={styles.conteinerTextInput}>
 			<TextInput
 
 
@@ -95,7 +95,7 @@ return (
 		</View>
 
 
-		<View style={styles.conteinerTextIput}>
+		<View style={styles.conteinerTextInput}>
 
 			<TextInput
 
@@ -109,7 +109,7 @@ return (
 		</View>
 
 
-		<View style={styles.conteinerTextIput}>
+		<View style={styles.conteinerTextInput}>
 			<TextInput
 
 
@@ -122,7 +122,7 @@ return (
 		</View>
 
 
-		<View style={styles.conteinerTextIput}>
+		<View style={styles.conteinerTextInput}>
 			<TextInput
 
 
@@ -135,7 +135,7 @@ return (
 		</View>
 
 
-		<View style={styles.conteinerTextIput}>
+		<View style={styles.conteinerTextInput}>
 
 			<TextInput
 
@@ -149,7 +149,7 @@ return (
 		</View>
 
 
-		<View style={styles.conteinerTextIput}>
+		<View style={styles.conteinerTextInput}>
 
 			<TextInput
 
@@ -163,7 +163,7 @@ return (
 		</View>
 
 
-		<View style={styles.conteinerTextIput}>
+		<View style={styles.conteinerTextInput}>
 
 			<TextInput
 
@@ -176,7 +176,6 @@ return (
 			/>
 		</View>
 
-		<Text style="{height:20}"></Text>
 
 		<Button title='Cadastrar Aluno'  />
 
