@@ -8,22 +8,25 @@
 //VVVVVVV
 import React from 'react';
 import { StyleSheet,
-         Text,
-         View,
-         Button } from 'react-native';
+	Text,
+	View,
+	Button, } from 'react-native';
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
-
+import Acordion from "./Acordion";
 
 export default function HomeScreen({navigation}){
 	return (
 		<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+		<Acordion/>
+		
 		<Text>Home Screen</Text>
 		<Button
-			title="Ir para tela de edição"
-			onPress={() => navigation.navigate('Editor')}
+		title="Ir para tela de edição"
+		onPress={() => navigation.navigate('Editor')}
 		/>
+
+
 		</View>
-	);
-}
+		);
+	}
