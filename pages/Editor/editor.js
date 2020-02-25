@@ -17,163 +17,103 @@ SafeAreaView
 } from 'react-native';
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+const perfilAluno={ Nome: 'Antonio José Munia',DataNascimento:'12/10/2010', Cidade: 'São Jõao do Mato verde' , Ano: '1', Rua:'Rua José Pereira Manuel Antonio',Numero:'12',Complemento:'FRENTE',Bairro:'Jd. Primavera',Cidade:'São jõao do Mato Bento',Estado:'SP', CEP:'150599', NomeDaMae:'Maria Julia Casanova',CPFdaMae:'364.123.123-12',DataPagamento:'5'}
 
 //Biblioteca Formic usado para preenchimento de dados
 import { Formik } from 'formik';
 
 
 
+function EntradaUsuario({placeholder,defaultValue,value}){
+	return(
+		<View style={styles.conteinerTextInput}>
+			<TextInput
+				defaultValue={defaultValue}
+				placeholder={placeholder}
+
+				placeholderTextColor="white"
+				underlineColorAndroid="transparent"
+				style={styles.textInput}
+			/>
+		</View>
+
+	)
+}
+
+
 export default function  DetailsScreen() {
+
 return (
 <KeyboardAvoidingView style={styles.conteiner} behavior="padding">
-
+	
 	<ScrollView>
 		<Text style={[styles.largeText, styles.textStyle]}> Cadastro de Alunos</Text>
 
-		<View style={styles.conteinerTextInput}>
-			<TextInput
+		<EntradaUsuario
+			placeholder={"Nome"} 
+			defaultValue={perfilAluno.Nome}
+		/>
+
+		<EntradaUsuario
+			placeholder={"Ano do Colégio"} 
+			defaultValue={perfilAluno.Ano}
+		/>
 
 
-			placeholder="Nome"
+		<EntradaUsuario
+			placeholder={"Data de Nascimento"} 
+			defaultValue={perfilAluno.DataNascimento}
+		/>
 
-			placeholderTextColor="white"
-			underlineColorAndroid="transparent"
-			style={styles.textInput}
-			/>
+		<EntradaUsuario
+			placeholder={"Rua"} 
+			defaultValue={perfilAluno.Rua}
+		/>
 
-		</View>
+		<EntradaUsuario
+			placeholder={"Rua"} 
+			defaultValue={perfilAluno.Rua}
+		/>
 
-		<View style={styles.conteinerTextInput}>
-			<TextInput
+		<EntradaUsuario
+			placeholder={"Numero"} 
+			defaultValue={perfilAluno.Numero}
+		/>
 
+		<EntradaUsuario
+			placeholder={"Complemento"} 
+			defaultValue={perfilAluno.Complemento}
+		/>
 
-			placeholder="Ano do colegio"
+		<EntradaUsuario
+			placeholder={"Bairro"} 
+			defaultValue={perfilAluno.Bairro}
+		/>
 
-			placeholderTextColor="white"
-			underlineColorAndroid="transparent"
-			style={styles.textInput}
-			/>
-		</View>
+		<EntradaUsuario
+			placeholder={"Cidade"} 
+			defaultValue={perfilAluno.Cidade}
+		/>
 
-		<View style={styles.conteinerTextInput}>
-			<TextInput
+		<EntradaUsuario
+			placeholder={"Estado"} 
+			defaultValue={perfilAluno.Estado}
+		/>
 
+		<EntradaUsuario
+			placeholder={"Nome da Mãe"} 
+			defaultValue={perfilAluno.NomeDaMae}
+		/>
 
-			placeholder="Rua"
+		<EntradaUsuario
+			placeholder={"CPF da Mãe"} 
+			defaultValue={perfilAluno.CPFdaMae}
+		/>
 
-			placeholderTextColor="white"
-			underlineColorAndroid="transparent"
-			style={styles.textInput}
-			/>
-		</View>
-
-
-		<View style={styles.conteinerTextInput}>
-			<TextInput
-
-
-			placeholder="Numero"
-
-			placeholderTextColor="white"
-			underlineColorAndroid="transparent"
-			style={styles.textInput}
-			/>
-		</View>
-
-
-		<View style={styles.conteinerTextInput}>
-			<TextInput
-
-
-			placeholder="Complemento"
-
-			placeholderTextColor="white"
-			underlineColorAndroid="transparent"
-			style={styles.textInput}
-			/>
-		</View>
-
-
-		<View style={styles.conteinerTextInput}>
-
-			<TextInput
-
-
-			placeholder="Bairro"
-
-			placeholderTextColor="white"
-			underlineColorAndroid="transparent"
-			style={styles.textInput}
-			/>
-		</View>
-
-
-		<View style={styles.conteinerTextInput}>
-			<TextInput
-
-
-			placeholder="Cidade"
-
-			placeholderTextColor="white"
-			underlineColorAndroid="transparent"
-			style={styles.textInput}
-			/>
-		</View>
-
-
-		<View style={styles.conteinerTextInput}>
-			<TextInput
-
-
-			placeholder="Estado"
-
-			placeholderTextColor="white"
-			underlineColorAndroid="transparent"
-			style={styles.textInput}
-			/>
-		</View>
-
-
-		<View style={styles.conteinerTextInput}>
-
-			<TextInput
-
-
-			placeholder="Nome Da Mãe"
-
-			placeholderTextColor="white"
-			underlineColorAndroid="transparent"
-			style={styles.textInput}
-			/>
-		</View>
-
-
-		<View style={styles.conteinerTextInput}>
-
-			<TextInput
-
-
-			placeholder="CPF da Mãe"
-
-			placeholderTextColor="white"
-			underlineColorAndroid="transparent"
-			style={styles.textInput}
-			/>
-		</View>
-
-
-		<View style={styles.conteinerTextInput}>
-
-			<TextInput
-
-
-			placeholder="Data preferencial de Pagamento"
-
-			placeholderTextColor="white"
-			underlineColorAndroid="transparent"
-			style={styles.textInput}
-			/>
-		</View>
+		<EntradaUsuario
+			placeholder={"Data Preferencial de Pagamento"} 
+			defaultValue={perfilAluno.DataPagamento}
+		/>
 
 
 		<Button title='Cadastrar Aluno'  />
