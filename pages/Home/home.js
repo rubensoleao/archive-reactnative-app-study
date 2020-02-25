@@ -15,35 +15,47 @@ import { SafeAreaView,
 
 import Constants from 'expo-constants';
 
+
+
+//Dados Temporários de perfils de alunos para teste
 const DATA = [
 	{
-		nome: 'Antônio Alves Pereira',
+		 id:'xxasdas da s',Nome: 'Antonio José Munia',DataNascimento:'22/05/1999', Cidade: 'São Jõao do Mato verde' , Ano: '1', Rua:'Rua José Pereira Manuel Antonio',Numero:'12',Complemento:'FRENTE',Bairro:'Jd. Primavera',Cidade:'São jõao do Mato Bento',Estado:'SP', CEP:'150599', NomeDaMae:'Maria Julia Casanova',CPFdaMae:'364.123.123-12',DataPagamento:'5',
+
 	},
 	{
-		nome: 'Douglas Pereira Silva',
+		 id:'dalklq12lk3123l1k231lskl',Nome: 'Antonio Roger Braga',DataNascimento:'22/05/1999', Cidade: 'São Jõao do Mato verde' , Ano: '1', Rua:'Rua José Pereira Manuel Antonio',Numero:'12',Complemento:'FRENTE',Bairro:'Jd. Primavera',Cidade:'São jõao do Mato Bento',Estado:'SP', CEP:'150599', NomeDaMae:'Maria Julia Casanova',CPFdaMae:'364.123.123-12',DataPagamento:'5',
 	},
 	{
-		nome: 'José Augsto',
+		 id:'23k41j2lk3j41l2kj34lk1jk4j',Nome: 'São Jõao de Nunes Feição Penhoso',DataNascimento:'22/05/1999', Cidade: 'São Jõao do Mato verde' , Ano: '1', Rua:'Rua José Pereira Manuel Antonio',Numero:'12',Complemento:'FRENTE',Bairro:'Jd. Primavera',Cidade:'São jõao do Mato Bento',Estado:'SP', CEP:'150599', NomeDaMae:'Maria Julia Casanova',CPFdaMae:'364.123.123-12',DataPagamento:'5',
 	},
 ];
 
 
-// Função Item define 
-function BotaoUsuario({ nome, navigation }) {
+// Função que retorna um botão para o usuário
+// Recebe:
+// 	- perfil: Recebe o dicionário que representa o perfil de usuário
+//  - navigation: que permite rotear para outra página
+function BotaoUsuario({ perfil, navigation }) {
   return (
 	<View >
-		<TouchableHighlight style={styles.item}X onPress={() => navigation.navigate('PerfilUsuario')}>
-		<Text style={styles.textoUsuario}>{nome}</Text>
+		<TouchableHighlight style={styles.item}X onPress={() => navigation.navigate('PerfilUsuario',{perfilAluno: perfil,}) }>
+		<Text style={styles.textoUsuario}>{perfil.Nome}</Text>
 		</TouchableHighlight>
 	</View>
   );
 }
 
-export default function HomeScreen({navigation}){  return (
+
+// Função principal HOME.
+// Percorre um banco de dados DATA de perfils e cria uma Flatlist a partir dela. Cada elemento da flatlist é criado
+// pela função BotaoUsuario.
+//
+export default function HomeScreen({navigation,item}){  return (
 	<SafeAreaView style={styles.container,{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
 		<FlatList 
 			data={DATA}
-			renderItem={({ item }) => <BotaoUsuario nome={item.nome} navigation={navigation} />}
+			renderItem={({ item }) => <BotaoUsuario perfil={item} navigation={navigation}/>}
 			keyExtractor={item => item.id}
 		/>
 

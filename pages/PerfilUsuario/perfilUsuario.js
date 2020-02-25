@@ -5,41 +5,44 @@ import { StyleSheet,
          Button } from 'react-native';
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-const usuario_vazio={ Nome: '',DataNascimento:'', Cidade: '' , Ano: '', CEP:'', Rua:'',Numero:'',Complemento:'',Bairro:'',Cidade:'',Estado:'',NomeDaMae:'',CPFdaMae:'',DataPagamento:''}
+const perfilAluno_vazio={ Nome: '',DataNascimento:'', Cidade: '' , Ano: '', CEP:'', Rua:'',Numero:'',Complemento:'',Bairro:'',Cidade:'',Estado:'',NomeDaMae:'',CPFdaMae:'',DataPagamento:''}
 
 
-const usuario={ Nome: 'Antonio José Munia',DataNascimento:'', Cidade: 'São Jõao do Mato verde' , Ano: '1', Rua:'Rua José Pereira Manuel Antonio',Numero:'12',Complemento:'FRENTE',Bairro:'Jd. Primavera',Cidade:'São jõao do Mato Bento',Estado:'SP', CEP:'150599', NomeDaMae:'Maria Julia Casanova',CPFdaMae:'364.123.123-12',DataPagamento:'5'}
+const perfilAluno2={ Nome: 'Antonio José Munia',DataNascimento:'12/10/2010', Cidade: 'São Jõao do Mato verde' , Ano: '1', Rua:'Rua José Pereira Manuel Antonio',Numero:'12',Complemento:'FRENTE',Bairro:'Jd. Primavera',Cidade:'São jõao do Mato Bento',Estado:'SP', CEP:'150599', NomeDaMae:'Maria Julia Casanova',CPFdaMae:'364.123.123-12',DataPagamento:'5'}
 
-export default function PerfilUsuarioScreen({navigation}){
+
+// Passando parametros por rotas:https://reactnavigation.org/docs/en/params.html
+export default function PerfilperfilAlunoScreen({route,navigation}){
+	const {perfilAluno} = route.params;
 	return (
 		<View style={{flex:1}}>
 		<View style={styles.conteiner}>
-		<Text style={styles.nome}>{usuario.Nome}</Text>
-		<Text style={styles.Text}>{usuario.Ano}º Ano</Text>
+		<Text style={styles.nome}>{perfilAluno.Nome}</Text>
+		<Text style={styles.Text}>{perfilAluno.Ano}º Ano</Text>
 		
 		<View style={styles.leftConteiner}>
-			<Text>Nascimento	{usuario.DataNascimento}</Text>
+			<Text>Nascimento	{perfilAluno.DataNascimento}</Text>
 		</View>
 		
 		<Text>Dados Mãe:</Text>
 		<View style={styles.leftConteiner}>
-			<Text >{usuario.NomeDaMae}</Text>
-			<Text >CPF {usuario.CPFdaMae}</Text>
+			<Text >{perfilAluno.NomeDaMae}</Text>
+			<Text >CPF {perfilAluno.CPFdaMae}</Text>
 		</View>
 		
 		<Text>Data de Pagamento</Text>
 		<View style={styles.leftConteiner}>
-			<Text > {usuario.DataPagamento}º dia útil</Text>
+			<Text > {perfilAluno.DataPagamento}º dia útil</Text>
 		</View>
 
 		<Text> Endereço</Text>
 
 		<View style={styles.leftConteiner}>
-			<Text >{usuario.Rua}, {usuario.Numero} </Text>
-			<Text >{usuario.Complemento}</Text>
-			<Text >{usuario.CEP}</Text>
-			<Text >{usuario.Bairro} </Text>
-			<Text >{usuario.Cidade}, {usuario.Estado}  </Text>
+			<Text >{perfilAluno.Rua}, {perfilAluno.Numero} </Text>
+			<Text >{perfilAluno.Complemento}</Text>
+			<Text >{perfilAluno.CEP}</Text>
+			<Text >{perfilAluno.Bairro} </Text>
+			<Text >{perfilAluno.Cidade}, {perfilAluno.Estado}  </Text>
 		</View>
 
 
