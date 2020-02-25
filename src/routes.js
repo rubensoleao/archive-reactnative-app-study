@@ -13,6 +13,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 //VVVV
 import HomeScreen from '../pages/Home/home'
 import EditorScreen from '../pages/Editor/editor'
+import PerfilUsuarioScreen from '../pages/PerfilUsuario/perfilUsuario'
+
 //^^^^^^^
 
 
@@ -23,6 +25,7 @@ export default function Routes(){
 		<Stack.Navigator initialRouteName="Home">
 			<Stack.Screen name="Home" component={HomeScreen} />
 			<Stack.Screen name="Editor" component={EditorScreen} />
+			<Stack.Screen name="PerfilUsuario" component={PerfilUsuarioScreen} />
 		</Stack.Navigator>
 
 	);
