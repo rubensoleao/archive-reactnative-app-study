@@ -11,8 +11,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 //Importando as telas de edicao e home
 //VVVV
-import HomeScreen from '../pages/home'
-import EditorScreen from '../pages/editor'
+import HomeScreen from '../pages/Home/home'
+import EditorScreen from '../pages/Editor/editor'
 //^^^^^^^
 
 
