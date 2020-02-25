@@ -31,6 +31,9 @@ const DATA = [
 	},
 ];
 
+//Varíavel utilizado para passar um perfil de aluno vazio para a criação de um usuario novo
+const perfilAluno_vazio={ id: '',Nome: '',DataNascimento:'', Cidade: '' , Ano: '', CEP:'', Rua:'',Numero:'',Complemento:'',Bairro:'',Cidade:'',Estado:'',NomeDaMae:'',CPFdaMae:'',DataPagamento:''}
+
 
 // Função que retorna um botão para o usuário
 // Recebe:
@@ -62,7 +65,7 @@ export default function HomeScreen({navigation,item}){  return (
 
 	<Button
 		title="Adicionar Perfil Novo"
-		onPress={() => navigation.navigate('Editor')}
+		onPress={() => navigation.navigate('Editor',{perfilAluno:perfilAluno_vazio,})}
 	/>
 	</SafeAreaView>
   );

@@ -5,14 +5,19 @@ import { StyleSheet,
          Button } from 'react-native';
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-const perfilAluno_vazio={ Nome: '',DataNascimento:'', Cidade: '' , Ano: '', CEP:'', Rua:'',Numero:'',Complemento:'',Bairro:'',Cidade:'',Estado:'',NomeDaMae:'',CPFdaMae:'',DataPagamento:''}
 
 
 // Passando parametros por rotas:https://reactnavigation.org/docs/en/params.html
+
 export default function PerfilperfilAlunoScreen({route,navigation}){
 	const {perfilAluno} = route.params;
+
 	return (
+
 		<View style={{flex:1}}>
+		
+
+
 		<View style={styles.conteiner}>
 		<Text style={styles.nome}>{perfilAluno.Nome}</Text>
 		<Text style={styles.Text}>{perfilAluno.Ano}º Ano</Text>
@@ -50,7 +55,6 @@ export default function PerfilperfilAlunoScreen({route,navigation}){
 			<Button 
 				color='red'
 				title="Deletar Perfil"
-				onPress={() => navigation.navigate('Editor')}
 			/>
 		</View>
 
@@ -58,7 +62,7 @@ export default function PerfilperfilAlunoScreen({route,navigation}){
 		<View style={styles.botaoEditar}>
 			<Button
 				title="Editar Perfil"
-				onPress={() => navigation.navigate('Editor')}
+				onPress={() => navigation.navigate('Editor',{perfilAluno})}
 			/>
 		</View>
 		</View>

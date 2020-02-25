@@ -17,7 +17,7 @@ SafeAreaView
 } from 'react-native';
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-const perfilAluno={ Nome: 'Antonio José Munia',DataNascimento:'12/10/2010', Cidade: 'São Jõao do Mato verde' , Ano: '1', Rua:'Rua José Pereira Manuel Antonio',Numero:'12',Complemento:'FRENTE',Bairro:'Jd. Primavera',Cidade:'São jõao do Mato Bento',Estado:'SP', CEP:'150599', NomeDaMae:'Maria Julia Casanova',CPFdaMae:'364.123.123-12',DataPagamento:'5'}
+const perfilAluno2={ Nome: 'Antonio José Munia',DataNascimento:'12/10/2010', Cidade: 'São Jõao do Mato verde' , Ano: '1', Rua:'Rua José Pereira Manuel Antonio',Numero:'12',Complemento:'FRENTE',Bairro:'Jd. Primavera',Cidade:'São jõao do Mato Bento',Estado:'SP', CEP:'150599', NomeDaMae:'Maria Julia Casanova',CPFdaMae:'364.123.123-12',DataPagamento:'5'}
 
 //Biblioteca Formic usado para preenchimento de dados
 import { Formik } from 'formik';
@@ -41,11 +41,11 @@ function EntradaUsuario({placeholder,defaultValue,value}){
 }
 
 
-export default function  DetailsScreen() {
+export default function  DetailsScreen({route,navigation}) {
+const {perfilAluno} = route.params;
 
 return (
 <KeyboardAvoidingView style={styles.conteiner} behavior="padding">
-	
 	<ScrollView>
 		<Text style={[styles.largeText, styles.textStyle]}> Cadastro de Alunos</Text>
 
