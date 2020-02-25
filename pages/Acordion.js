@@ -39,13 +39,6 @@ const CONTENT = [
   },
 ];
 
-//To make the selector (Something like tabs)
-const SELECTORS = [
-  { title: 'T&C', value: 0 },
-  { title: 'Privacy Policy', value: 1 },
-  { title: 'Return Policy', value: 2 },
-  { title: 'Reset all' },
-];
 
 export default class Accordion1 extends Component {
   state = {
