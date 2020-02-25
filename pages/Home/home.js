@@ -5,66 +5,71 @@
 
 
 import React from 'react';
-import { SafeAreaView, View, FlatList, StyleSheet, Text, Button,TouchableHighlight } from 'react-native';
+import { SafeAreaView,
+		 View, FlatList, 
+		 StyleSheet, 
+		 Text, 
+		 Button,
+		 TouchableHighlight 
+		} from 'react-native';
+
 import Constants from 'expo-constants';
 
 const DATA = [
-  {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    title: 'First Item',
-  },
-  {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-    title: 'Second Item',
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    title: 'Third Item',
-  },
+	{
+		nome: 'Antônio Alves Pereira',
+	},
+	{
+		nome: 'Douglas Pereira Silva',
+	},
+	{
+		nome: 'José Augsto',
+	},
 ];
 
 
 // Função Item define 
-function BotaoUsuario({ title, navigation }) {
+function BotaoUsuario({ nome, navigation }) {
   return (
-    <View style={styles.item}>
-        <TouchableHighlight onPress={() => navigation.navigate('PerfilUsuario')}>
-     
-					<Text style={styles.title}>{title}</Text>
+	<View >
+		<TouchableHighlight style={styles.item}X onPress={() => navigation.navigate('PerfilUsuario')}>
+		<Text style={styles.textoUsuario}>{nome}</Text>
 		</TouchableHighlight>
-    </View>
+	</View>
   );
 }
 
 export default function HomeScreen({navigation}){  return (
-    <SafeAreaView style={styles.container,{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <FlatList 
-        data={DATA}
-        renderItem={({ item }) => <BotaoUsuario title={item.title} navigation={navigation} />}
-        keyExtractor={item => item.id}
-      />
-      		<Button
-			title="Ir para tela de Perfil"
-			
+	<SafeAreaView style={styles.container,{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+		<FlatList 
+			data={DATA}
+			renderItem={({ item }) => <BotaoUsuario nome={item.nome} navigation={navigation} />}
+			keyExtractor={item => item.id}
 		/>
 
 
-    </SafeAreaView>
+	<Button
+		title="Adicionar Perfil Novo"
+		onPress={() => navigation.navigate('Editor')}
+	/>
+	</SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    marginTop: Constants.statusBarHeight,
+	flex: 1,
+	marginTop: Constants.statusBarHeight,
   },
   item: {
-    backgroundColor: '#f9c2ff',
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
+	backgroundColor: '#DDDDDD',
+	paddingVertical:5,
+	paddingHorizontal:10,
+	marginVertical: 4,
+	marginHorizontal: 2,
+	borderRadius: 3,
   },
-  title: {
-    fontSize: 32,
+  textoUsuario: {
+	fontSize: 32,
   },
 });
