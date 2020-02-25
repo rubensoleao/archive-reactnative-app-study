@@ -13,13 +13,13 @@ import { StyleSheet,
 	Button, } from 'react-native';
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-import Acordion from "./Acordion";
+import Acordion1 from "./Acordion";
 
 export default function HomeScreen({navigation}){
 	return (
 		<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-		<Acordion/>
-		
+		<Acordion1/>
+
 		<Text>Home Screen</Text>
 		<Button
 		title="Ir para tela de edição"
