@@ -1,15 +1,16 @@
 //bd.js Contém as funções de acesso ao banco de dados
 
-import {
-  AsyncStorage,
-  Alert
-} from 'react-native';
-
 // Método de atualização de perfil ao BD:
 //	- Ler todos os registros do Banco de dados
 //  - Modificar o usuario desejado
 //  - Escreve todos os usuarios devolta ao BD
 
+import {
+  AsyncStorage,
+  Alert
+} from 'react-native';
+
+import gerarChave from './gerarChave'
 
 const  masterKey = 'MasterBD'
 
@@ -36,6 +37,16 @@ export  const gravarAluno = async (perfilAluno) => {
 	//console.log('A escrever:')
 	//console.log(perfilAluno);
 	//adiciona aluno ao dbGravado na variavel
+
+	// Verifica se é para criar ou editar um aluno
+	// - id do aluno == '' => Criar aluno novo
+	// - id do aluno já exista => editar aluno.
+	//
+	// A edição é feita sobrescrevendo o aluno dentro do BD 
+	if (dbAlunos.id ==''){
+		console.log('gerar novo aluno');
+		dbAlunos.id = gerarChave();
+	}
 	dbAlunos[perfilAluno.id] = perfilAluno;
 	//console.log('dbatualizado:')
 	//console.log(dbAlunos)
