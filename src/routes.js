@@ -15,6 +15,7 @@ import HomeScreen from '../pages/Home/home'
 import EditorScreen from '../pages/Editor/editor'
 import PerfilUsuarioScreen from '../pages/PerfilUsuario/perfilUsuario'
 
+
 //^^^^^^^
 
 

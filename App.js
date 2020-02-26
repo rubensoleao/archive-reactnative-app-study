@@ -24,6 +24,12 @@ import { createStackNavigator } from '@react-navigation/stack';
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 import Routes from "./src/routes"
+import {initDB,gravarAluno} from './src/bd';
+
+
+//Inicia o banco de dados padrão caso não estaja iniciado
+initDB();
+gravarAluno();
 
 
 function App() {
