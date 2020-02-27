@@ -4,6 +4,8 @@ import { StyleSheet,
          View,
          Button } from 'react-native';
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+import {removerAluno} from '../../src/bd';
+
 
 
 
@@ -11,6 +13,16 @@ import { StyleSheet,
 
 export default function PerfilperfilAlunoScreen({route,navigation}){
 	const {perfilAluno} = route.params;
+
+	const idAluno=perfilAluno.id
+
+	async function  botaoRemover(idAluno){
+		console.log("remocao Aqui")
+		console.log(idAluno)
+		await removerAluno(idAluno)
+		navigation.popToTop()
+	}
+
 
 	return (
 
@@ -55,6 +67,8 @@ export default function PerfilperfilAlunoScreen({route,navigation}){
 			<Button 
 				color='red'
 				title="Deletar Perfil"
+				onPress={()=>{removerAluno(idAluno);navigation.popToTop()}}
+				
 			/>
 		</View>
 

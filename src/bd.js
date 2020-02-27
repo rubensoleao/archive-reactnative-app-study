@@ -32,10 +32,8 @@ export  const gravarAluno = async (perfilAluno) => {
 	catch(error){
 		console.log('erro ao ler BD em função gravarAluno' + error);
 	}
-	console.log('dbLido:')
-	console.log(dbAlunos)
-	console.log('A escrever:')
-	console.log(perfilAluno);
+
+
 	//adiciona aluno ao dbGravado na variavel
 
 	// Verifica se é para criar ou editar um aluno
@@ -47,10 +45,8 @@ export  const gravarAluno = async (perfilAluno) => {
 		console.log('gerar novo aluno');
 		perfilAluno["id"] = gerarChave();
 	}
-	console.log('chave Gerada'+ perfilAluno.id )
 	dbAlunos[perfilAluno.id] = perfilAluno;
-	console.log('dbatualizado:')
-	console.log(dbAlunos)
+
 	//escreve a db devolta na memoria local
     try {
     	await AsyncStorage.setItem(masterKey, JSON.stringify(dbAlunos));
@@ -95,10 +91,16 @@ export const initDB = async ()=> {
 }
 
 
-export const resetKey = async() => {
-    try {
-      await AsyncStorage.removeItem('1234123412');
-    } catch (error) {
-      console.log("Error resetting data" + error);
-    }
-  }
+export const removerAluno = async(idAluno) => {
+
+    let dbAlunos = await AsyncStorage.getItem(masterKey)
+
+    dbAlunos = JSON.parse(dbAlunos);
+    delete dbAlunos[idAluno];	
+    dbAlunos = JSON.stringify(dbAlunos);
+
+
+    try { await AsyncStorage.setItem(masterKey, dbAlunos);} 
+    catch (error) { console.log("Error ao escrever dados" + error);}
+ 
+ }
