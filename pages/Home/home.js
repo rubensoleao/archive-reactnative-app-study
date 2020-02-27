@@ -18,22 +18,17 @@ import Constants from 'expo-constants';
 
 import {lerAlunos} from '../../src/bd'
 
+import { COLOR, ThemeContext, getTheme } from 'react-native-material-ui';
 
-//Dados Temporários de perfils de alunos para teste
-const DATA2 = {
-	 aluno_xxasdasdas:{
-		 id:'aluno_xxasdasdas',Nome: 'Antonio José Munia',DataNascimento:'22/05/1999', Cidade: 'São Jõao do Mato verde' , Ano: '1', Rua:'Rua José Pereira Manuel Antonio',Numero:'12',Complemento:'FRENTE',Bairro:'Jd. Primavera',Cidade:'São jõao do Mato Bento',Estado:'SP', CEP:'150599', NomeDaMae:'Maria Julia Casanova',CPFdaMae:'364.123.123-12',DataPagamento:'5',
-	},
-	 aluno_dalklq12lk3123l1k231lskl:{
-		 id:'aluno_dalklq12lk3123l1k231lskl',Nome: 'Antonio Roger Braga',DataNascimento:'22/05/1999', Cidade: 'São Jõao do Mato verde' , Ano: '1', Rua:'Rua José Pereira Manuel Antonio',Numero:'12',Complemento:'FRENTE',Bairro:'Jd. Primavera',Cidade:'São jõao do Mato Bento',Estado:'SP', CEP:'150599', NomeDaMae:'Maria Julia Casanova',CPFdaMae:'364.123.123-12',DataPagamento:'5',
-	},
-	 aluno_23k41j2lk3j41l2kj34lk1jk4j:{
-		 id:'aluno_23k41j2lk3j41l2kj34lk1jk4j',Nome: 'São Jõao de Nunes Feição Penhoso',DataNascimento:'22/05/1999', Cidade: 'São Jõao do Mato verde' , Ano: '1', Rua:'Rua José Pereira Manuel Antonio',Numero:'12',Complemento:'FRENTE',Bairro:'Jd. Primavera',Cidade:'São jõao do Mato Bento',Estado:'SP', CEP:'150599', NomeDaMae:'Maria Julia Casanova',CPFdaMae:'364.123.123-12',DataPagamento:'5',
-	},
-};
 
-//Varíavel utilizado para passar um perfil de aluno vazio para a criação de um usuario novo
-const perfilAluno_vazio={ id: '',Nome: '',DataNascimento:'', Cidade: '' , Ano: '', CEP:'', Rua:'',Numero:'',Complemento:'',Bairro:'',Cidade:'',Estado:'',NomeDaMae:'',CPFdaMae:'',DataPagamento:''}
+//Varíavel utilizado para passar um perfil de aluno
+// vazio para a criação de um usuario novo
+const perfilAluno_vazio={
+	id: '', Nome: '',DataNascimento:'', Cidade: '' ,
+	Ano: '', CEP:'', Rua:'',Numero:'',Complemento:'',
+	Bairro:'',Cidade:'',Estado:'',NomeDaMae:'',CPFdaMae:'',
+	DataPagamento:''}
+
 
 
 // Função que retorna um botão para o usuário
@@ -52,67 +47,58 @@ function BotaoUsuario({ perfil, navigation }) {
 
 
 // Função principal HOME.
-// Percorre um banco de dados DATA de perfils e cria uma Flatlist a partir dela. Cada elemento da flatlist é criado
+// Percorre um banco de dados DATA de perfils e cria uma
+// Flatlist a partir dela. Cada elemento da flatlist é criado
 // pela função BotaoUsuario.
-
-
-
-
 export default class HomeScreen extends React.Component{
 	constructor(props) {
-    	super(props);
-    	this.state ={db:''}
-  	}
+		super(props);
+		this.state ={db:''}
+	}
 	
 
+	// Adiciona listener para atualizar o bd sempre que entrar em foco
+	// necessario para o react navigate
+	// https://reactnavigation.org/docs/navigation-lifecycle
+	// https://reactnavigation.org/docs/function-after-focusing-screen
 	componentDidMount(){
-		//Adicionar listener para atualizar o bd sempre que entrar em foco
-		// necessario para o react navigate
-		//https://reactnavigation.org/docs/navigation-lifecycle
-		//https://reactnavigation.org/docs/function-after-focusing-screen
 		let sub = this.props.navigation.addListener('focus', () => {
-    		this.lerAlunos();
-    		this.forceUpdate()
-    	});
-  	}
+			this.lerAlunos();
+			this.forceUpdate()
+		});
+	}
 	
 	componentWillUnmount() {
-    	sub.unsubscribe();
-  	}
+		sub.unsubscribe();
+	}
 
-	
+	//Lê o BDlocal e salva em state
 	lerAlunos = async () =>  {
-    console.log("entrou")
-    let name = await AsyncStorage.getItem('MasterBD');
-    	if (name!=null){
-    	  console.log('VVVVVVVVVVVV')
-    	  name=JSON.parse(name)
-    	  console.log(name)
- 	   	  this.setState({db:Object.values(name)})
-    	  console.log(this.state.db)
-    	  console.log('^^^^^^ ')
-
+		let name = await AsyncStorage.getItem('MasterBD');
+		if (name!=null){
+		  name=JSON.parse(name);
+		  this.setState({db:Object.values(name)});
 		}
 	}
 
 	render( ){
 		console.log('rendered')
 	return (
-	<SafeAreaView style={styles.container,{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-		<FlatList 
-			data={this.state.db}
-			renderItem={({ item }) => <BotaoUsuario perfil={item} navigation={this.props.navigation}/>}
-			keyExtractor={item => item.id}
-		/>
+		<SafeAreaView style={styles.container,{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+			
+			<FlatList 
+				data={this.state.db}
+				renderItem={({ item }) => <BotaoUsuario perfil={item} navigation={this.props.navigation}/>}
+				keyExtractor={item => item.id}
+			/>
 
-	<Text>{this.state.message}</Text>
-	<Button
-		title="Adicionar Perfil Novo"
-		onPress={() => this.props.navigation.navigate('Editor',{perfilAluno:perfilAluno_vazio,})}
-	/>
+			<Button
+				title="Adicionar Perfil Novo"
+				onPress={() => this.props.navigation.navigate('Editor',{perfilAluno:perfilAluno_vazio,})}
+			/>
 
-	</SafeAreaView>
-  );}
+		</SafeAreaView>
+	  );}
 }
 
 const styles = StyleSheet.create({
