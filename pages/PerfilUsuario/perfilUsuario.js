@@ -91,7 +91,6 @@ const styles = StyleSheet.create({
 		flexDirection:'column',
 		
 		backgroundColor: 'white',
-		textAlign: 'center',
 
 		paddingVertical: 1,
 
@@ -117,11 +116,9 @@ const styles = StyleSheet.create({
 	botaoDeletar:{
 	    
 		margin: 5,
-		color:'red',
 	},botaoEditar:{
 		margin: 5,
 		marginBottom:36,
-		color:'red',
 	},
 	bottomConteiner:{
 		flex:1,
