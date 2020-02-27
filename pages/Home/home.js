@@ -63,12 +63,21 @@ export default class HomeScreen extends React.Component{
     	super(props);
     	this.state ={}
   	}
+	
+
 	componentDidMount(){
-		this.lerAlunos();
-	}
+		//Adicionar listener para atualizar o bd sempre que entrar em foco
+		// necessario para o react navigate
+		let sub = this.props.navigation.addListener('focus', () => {
+    		this.lerAlunos();
+    	});
+  	}
+	
+	componentWillUnmount() {
+    	sub.unsubscribe();
+  	}
 
-
-	//Ler alunos no BD
+	
 	lerAlunos = async () =>  {
     console.log("entrou")
     let name = await AsyncStorage.getItem('MasterBD');
