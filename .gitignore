@@ -12,3 +12,11 @@ web-report/
 
 # macOS
 .DS_Store
+
+*.bkup
+
+.bd.js.example
+
+.notes/
+
+pages/.Acordion_template.js

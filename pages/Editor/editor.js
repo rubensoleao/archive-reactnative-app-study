@@ -24,8 +24,13 @@ import { Formik } from 'formik';
 
 
 import {gravarAluno} from '../../src/bd';
+//values => gravarAluno(values)
 
 
+function submeterFormulario(values){
+	
+	navigation.popToTop()
+}
 
 export default function  DetailsScreen({route,navigation}) {
 const {perfilAluno} = route.params;
@@ -39,7 +44,7 @@ return (
 		<Formik 
 		enableReinitialize
 		initialValues={perfilAluno} 
-		onSubmit={values => gravarAluno(values)}
+		onSubmit={values => {gravarAluno(values);  navigation.popToTop()}}
 		>
 
 		{({ values, handleChange, handleSubmit, isValid,errors,touched}) => (
