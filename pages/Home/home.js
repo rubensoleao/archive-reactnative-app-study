@@ -68,6 +68,8 @@ export default class HomeScreen extends React.Component{
 	componentDidMount(){
 		//Adicionar listener para atualizar o bd sempre que entrar em foco
 		// necessario para o react navigate
+		//https://reactnavigation.org/docs/navigation-lifecycle
+		//https://reactnavigation.org/docs/function-after-focusing-screen
 		let sub = this.props.navigation.addListener('focus', () => {
     		this.lerAlunos();
     	});
