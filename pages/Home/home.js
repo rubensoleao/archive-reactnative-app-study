@@ -61,7 +61,7 @@ function BotaoUsuario({ perfil, navigation }) {
 export default class HomeScreen extends React.Component{
 	constructor(props) {
     	super(props);
-    	this.state ={}
+    	this.state ={db:''}
   	}
 	
 
@@ -72,6 +72,7 @@ export default class HomeScreen extends React.Component{
 		//https://reactnavigation.org/docs/function-after-focusing-screen
 		let sub = this.props.navigation.addListener('focus', () => {
     		this.lerAlunos();
+    		this.forceUpdate()
     	});
   	}
 	
@@ -83,17 +84,23 @@ export default class HomeScreen extends React.Component{
 	lerAlunos = async () =>  {
     console.log("entrou")
     let name = await AsyncStorage.getItem('MasterBD');
-    if (name!=null){
-      name=JSON.parse(name)
-      this.setState(name)
-	}
+    	if (name!=null){
+    	  console.log('VVVVVVVVVVVV')
+    	  name=JSON.parse(name)
+    	  console.log(name)
+ 	   	  this.setState({db:Object.values(name)})
+    	  console.log(this.state.db)
+    	  console.log('^^^^^^ ')
+
+		}
 	}
 
 	render( ){
+		console.log('rendered')
 	return (
 	<SafeAreaView style={styles.container,{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
 		<FlatList 
-			data={Object.values(this.state)}
+			data={this.state.db}
 			renderItem={({ item }) => <BotaoUsuario perfil={item} navigation={this.props.navigation}/>}
 			keyExtractor={item => item.id}
 		/>
