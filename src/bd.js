@@ -32,10 +32,10 @@ export  const gravarAluno = async (perfilAluno) => {
 	catch(error){
 		console.log('erro ao ler BD em função gravarAluno' + error);
 	}
-	//console.log('dbLido:')
-	//console.log(dbAlunos)
-	//console.log('A escrever:')
-	//console.log(perfilAluno);
+	console.log('dbLido:')
+	console.log(dbAlunos)
+	console.log('A escrever:')
+	console.log(perfilAluno);
 	//adiciona aluno ao dbGravado na variavel
 
 	// Verifica se é para criar ou editar um aluno
@@ -43,13 +43,14 @@ export  const gravarAluno = async (perfilAluno) => {
 	// - id do aluno já exista => editar aluno.
 	//
 	// A edição é feita sobrescrevendo o aluno dentro do BD 
-	if (dbAlunos.id ==''){
+	if (perfilAluno.id ==''){
 		console.log('gerar novo aluno');
-		dbAlunos.id = gerarChave();
+		perfilAluno["id"] = gerarChave();
 	}
+	console.log('chave Gerada'+ perfilAluno.id )
 	dbAlunos[perfilAluno.id] = perfilAluno;
-	//console.log('dbatualizado:')
-	//console.log(dbAlunos)
+	console.log('dbatualizado:')
+	console.log(dbAlunos)
 	//escreve a db devolta na memoria local
     try {
     	await AsyncStorage.setItem(masterKey, JSON.stringify(dbAlunos));

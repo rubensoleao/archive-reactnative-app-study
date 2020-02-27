@@ -23,22 +23,8 @@ const perfilAluno2={ Nome: 'Antonio José Munia',DataNascimento:'12/10/2010', Ci
 import { Formik } from 'formik';
 
 
+import {gravarAluno} from '../../src/bd';
 
-function EntradaUsuario({placeholder,defaultValue,value}){
-	return(
-		<View style={styles.conteinerTextInput}>
-			<TextInput
-				defaultValue={defaultValue}
-				placeholder={placeholder}
-
-				placeholderTextColor="white"
-				underlineColorAndroid="transparent"
-				style={styles.textInput}
-			/>
-		</View>
-
-	)
-}
 
 
 export default function  DetailsScreen({route,navigation}) {
@@ -49,77 +35,157 @@ return (
 	<ScrollView>
 		<Text style={[styles.largeText, styles.textStyle]}> Cadastro de Alunos</Text>
 
-		<EntradaUsuario
-			placeholder={"Nome"} 
-			defaultValue={perfilAluno.Nome}
-		/>
 
-		<EntradaUsuario
-			placeholder={"Ano do Colégio"} 
-			defaultValue={perfilAluno.Ano}
-		/>
+		<Formik 
+		enableReinitialize
+		initialValues={perfilAluno} 
+		onSubmit={values => gravarAluno(values)}
+		>
 
+		{({ values, handleChange, handleSubmit, isValid,errors,touched}) => (
+		<View>
+			<View style={styles.conteinerTextInput}>
+				<TextInput
+				placeholder={"Nome"} 
+				value={values.Nome}
+				onChangeText={handleChange('Nome')}		
+				placeholderTextColor="white"
+				style={styles.textInput}
+				/>
+			</View>
 
-		<EntradaUsuario
-			placeholder={"Data de Nascimento"} 
-			defaultValue={perfilAluno.DataNascimento}
-		/>
-
-		<EntradaUsuario
-			placeholder={"Rua"} 
-			defaultValue={perfilAluno.Rua}
-		/>
-
-		<EntradaUsuario
-			placeholder={"Rua"} 
-			defaultValue={perfilAluno.Rua}
-		/>
-
-		<EntradaUsuario
-			placeholder={"Numero"} 
-			defaultValue={perfilAluno.Numero}
-		/>
-
-		<EntradaUsuario
-			placeholder={"Complemento"} 
-			defaultValue={perfilAluno.Complemento}
-		/>
-
-		<EntradaUsuario
-			placeholder={"Bairro"} 
-			defaultValue={perfilAluno.Bairro}
-		/>
-
-		<EntradaUsuario
-			placeholder={"Cidade"} 
-			defaultValue={perfilAluno.Cidade}
-		/>
-
-		<EntradaUsuario
-			placeholder={"Estado"} 
-			defaultValue={perfilAluno.Estado}
-		/>
-
-		<EntradaUsuario
-			placeholder={"Nome da Mãe"} 
-			defaultValue={perfilAluno.NomeDaMae}
-		/>
-
-		<EntradaUsuario
-			placeholder={"CPF da Mãe"} 
-			defaultValue={perfilAluno.CPFdaMae}
-		/>
-
-		<EntradaUsuario
-			placeholder={"Data Preferencial de Pagamento"} 
-			defaultValue={perfilAluno.DataPagamento}
-		/>
+			<View style={styles.conteinerTextInput}>
+				<TextInput
+				placeholder={"Ano do Colégio"} 
+				value={values.Ano}
+				onChangeText={handleChange('Ano')}		
+				placeholderTextColor="white"
+				style={styles.textInput}
+				/>
+			</View>
 
 
-		<Button title='Cadastrar Aluno'  />
+			<View style={styles.conteinerTextInput}>
+				<TextInput
+				placeholder={"Data de Nascimento"} 
+				value={values.DataNascimento}
+				onChangeText={handleChange('DataNascimento')}
+				placeholderTextColor="white"
+				style={styles.textInput}
+				/>
+			</View>
+
+			<View style={styles.conteinerTextInput}>
+				<TextInput
+				placeholder={"CEP"} 
+				value={values.CEP}
+				onChangeText={handleChange('CEP')}
+				placeholderTextColor="white"
+				style={styles.textInput}
+				/>
+			</View>
+
+			<View style={styles.conteinerTextInput}>
+				<TextInput
+				placeholder={"Rua"} 
+				value={values.Rua}
+				onChangeText={handleChange('Rua')}
+				placeholderTextColor="white"
+				style={styles.textInput}
+				/>
+			</View>
+
+			<View style={styles.conteinerTextInput}>
+				<TextInput
+				placeholder={"Numero"} 
+				value={values.Numero}
+				onChangeText={handleChange('Numero')}
+				placeholderTextColor="white"
+				style={styles.textInput}
+				/>
+			</View>
+
+			<View style={styles.conteinerTextInput}>
+				<TextInput
+				placeholder={"Complemento"} 
+				value={values.Complemento}
+				onChangeText={handleChange('Complemento')}
+				placeholderTextColor="white"
+				style={styles.textInput}
+				/>
+			</View>
+
+			<View style={styles.conteinerTextInput}>
+				<TextInput
+				placeholder={"Bairro"} 
+				value={values.Bairro}
+				onChangeText={handleChange('Bairro')}
+				placeholderTextColor="white"
+				style={styles.textInput}
+				/>
+			</View>
+
+			<View style={styles.conteinerTextInput}>
+				<TextInput
+				placeholder={"Cidade"} 
+				value={values.Cidade}
+				onChangeText={handleChange('Cidade')}
+				placeholderTextColor="white"
+				style={styles.textInput}
+				/>
+			</View>
+
+			<View style={styles.conteinerTextInput}>
+				<TextInput
+				placeholder={"Estado"} 
+				value={values.Estado}
+				onChangeText={handleChange('Estado')}
+				placeholderTextColor="white"
+				style={styles.textInput}
+				/>
+			</View>
+
+			<View style={styles.conteinerTextInput}>
+				<TextInput
+				placeholder={"Nome da Mãe"} 
+				value={values.NomeDaMae}
+				onChangeText={handleChange('NomeDaMae')}
+				placeholderTextColor="white"
+				style={styles.textInput}
+				/>
+			</View>
+
+			<View style={styles.conteinerTextInput}>
+				<TextInput
+				placeholder={"CPF da Mãe"} 
+				value={values.CPFdaMae}
+				onChangeText={handleChange('CPFdaMae')}
+				placeholderTextColor="white"
+				style={styles.textInput}
+				/>
+			</View>
 
 
-	</ScrollView>
+
+			<View style={styles.conteinerTextInput}>
+				<TextInput
+				placeholder={"Data Preferencial de Pagamento"} 
+				value={values.DataPagamento}
+				onChangeText={handleChange('DataPagamento')}
+				placeholderTextColor="white"
+				style={styles.textInput}
+				/>
+			</View>
+
+
+			<Button title='Cadastrar Aluno'  
+			onPress={handleSubmit}
+			/>
+		</View>)}
+		
+	</Formik>
+
+</ScrollView>
 </KeyboardAvoidingView >
 );
 }
