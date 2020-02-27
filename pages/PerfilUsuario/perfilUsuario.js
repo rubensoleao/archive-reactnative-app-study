@@ -9,28 +9,25 @@ import {removerAluno} from '../../src/bd';
 
 
 
-// Passando parametros por rotas:https://reactnavigation.org/docs/en/params.html
-
 export default function PerfilperfilAlunoScreen({route,navigation}){
+
+	//Recebe Paramêtro por react-routes
 	const {perfilAluno} = route.params;
 
-	const idAluno=perfilAluno.id
 
+	//Função
+	const idAluno=perfilAluno.id
 	async function  botaoRemover(idAluno){
 		console.log("remocao Aqui")
-		console.log(idAluno)
 		await removerAluno(idAluno)
 		navigation.popToTop()
 	}
 
 
 	return (
-
 		<View style={{flex:1}}>
-		
-
-
 		<View style={styles.conteiner}>
+		
 		<Text style={styles.nome}>{perfilAluno.Nome}</Text>
 		<Text style={styles.Text}>{perfilAluno.Ano}º Ano</Text>
 		
@@ -58,9 +55,8 @@ export default function PerfilperfilAlunoScreen({route,navigation}){
 			<Text >{perfilAluno.Bairro} </Text>
 			<Text >{perfilAluno.Cidade}, {perfilAluno.Estado}  </Text>
 		</View>
-
-
 		</View >
+
 
 		<View style={styles.bottomConteiner}>
 		<View style={styles.botaoDeletar}>
@@ -72,15 +68,15 @@ export default function PerfilperfilAlunoScreen({route,navigation}){
 			/>
 		</View>
 
-		{/*Mudar o botao debaixo para um touchable opacity, pois assim não da para mudar de altura*/}
+
 		<View style={styles.botaoEditar}>
 			<Button
 				title="Editar Perfil"
 				onPress={() => navigation.navigate('Editor',{perfilAluno})}
 			/>
 		</View>
-		</View>
 
+		</View>
 		</View>
 	);
 }

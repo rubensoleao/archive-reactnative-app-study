@@ -1,9 +1,12 @@
-//bd.js Contém as funções de acesso ao banco de dados
+/*
+	bd.js Contém as funções de acesso ao banco de dados
 
-// Método de atualização de perfil ao BD:
-//	- Ler todos os registros do Banco de dados
-//  - Modificar o usuario desejado
-//  - Escreve todos os usuarios devolta ao BD
+	 Método de atualização de perfil ao BD:
+		- Ler todos os registros do Banco de dados
+	  - Modificar o usuario desejado
+	  - Escreve todos os usuarios devolta ao BD
+*/
+
 
 import {
   AsyncStorage,
