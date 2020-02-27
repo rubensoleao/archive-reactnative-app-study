@@ -10,26 +10,27 @@ import { SafeAreaView,
 		 StyleSheet, 
 		 Text, 
 		 Button,
-		 TouchableHighlight 
+		 TouchableHighlight,
+		 AsyncStorage
 		} from 'react-native';
 
 import Constants from 'expo-constants';
 
+import {lerAlunos} from '../../src/bd'
 
 
 //Dados Temporários de perfils de alunos para teste
-const DATA = [
-	{
-		 id:'xxasdas da s',Nome: 'Antonio José Munia',DataNascimento:'22/05/1999', Cidade: 'São Jõao do Mato verde' , Ano: '1', Rua:'Rua José Pereira Manuel Antonio',Numero:'12',Complemento:'FRENTE',Bairro:'Jd. Primavera',Cidade:'São jõao do Mato Bento',Estado:'SP', CEP:'150599', NomeDaMae:'Maria Julia Casanova',CPFdaMae:'364.123.123-12',DataPagamento:'5',
-
+const DATA2 = {
+	 aluno_xxasdasdas:{
+		 id:'aluno_xxasdasdas',Nome: 'Antonio José Munia',DataNascimento:'22/05/1999', Cidade: 'São Jõao do Mato verde' , Ano: '1', Rua:'Rua José Pereira Manuel Antonio',Numero:'12',Complemento:'FRENTE',Bairro:'Jd. Primavera',Cidade:'São jõao do Mato Bento',Estado:'SP', CEP:'150599', NomeDaMae:'Maria Julia Casanova',CPFdaMae:'364.123.123-12',DataPagamento:'5',
 	},
-	{
-		 id:'dalklq12lk3123l1k231lskl',Nome: 'Antonio Roger Braga',DataNascimento:'22/05/1999', Cidade: 'São Jõao do Mato verde' , Ano: '1', Rua:'Rua José Pereira Manuel Antonio',Numero:'12',Complemento:'FRENTE',Bairro:'Jd. Primavera',Cidade:'São jõao do Mato Bento',Estado:'SP', CEP:'150599', NomeDaMae:'Maria Julia Casanova',CPFdaMae:'364.123.123-12',DataPagamento:'5',
+	 aluno_dalklq12lk3123l1k231lskl:{
+		 id:'aluno_dalklq12lk3123l1k231lskl',Nome: 'Antonio Roger Braga',DataNascimento:'22/05/1999', Cidade: 'São Jõao do Mato verde' , Ano: '1', Rua:'Rua José Pereira Manuel Antonio',Numero:'12',Complemento:'FRENTE',Bairro:'Jd. Primavera',Cidade:'São jõao do Mato Bento',Estado:'SP', CEP:'150599', NomeDaMae:'Maria Julia Casanova',CPFdaMae:'364.123.123-12',DataPagamento:'5',
 	},
-	{
-		 id:'23k41j2lk3j41l2kj34lk1jk4j',Nome: 'São Jõao de Nunes Feição Penhoso',DataNascimento:'22/05/1999', Cidade: 'São Jõao do Mato verde' , Ano: '1', Rua:'Rua José Pereira Manuel Antonio',Numero:'12',Complemento:'FRENTE',Bairro:'Jd. Primavera',Cidade:'São jõao do Mato Bento',Estado:'SP', CEP:'150599', NomeDaMae:'Maria Julia Casanova',CPFdaMae:'364.123.123-12',DataPagamento:'5',
+	 aluno_23k41j2lk3j41l2kj34lk1jk4j:{
+		 id:'aluno_23k41j2lk3j41l2kj34lk1jk4j',Nome: 'São Jõao de Nunes Feição Penhoso',DataNascimento:'22/05/1999', Cidade: 'São Jõao do Mato verde' , Ano: '1', Rua:'Rua José Pereira Manuel Antonio',Numero:'12',Complemento:'FRENTE',Bairro:'Jd. Primavera',Cidade:'São jõao do Mato Bento',Estado:'SP', CEP:'150599', NomeDaMae:'Maria Julia Casanova',CPFdaMae:'364.123.123-12',DataPagamento:'5',
 	},
-];
+};
 
 //Varíavel utilizado para passar um perfil de aluno vazio para a criação de um usuario novo
 const perfilAluno_vazio={ id: '',Nome: '',DataNascimento:'', Cidade: '' , Ano: '', CEP:'', Rua:'',Numero:'',Complemento:'',Bairro:'',Cidade:'',Estado:'',NomeDaMae:'',CPFdaMae:'',DataPagamento:''}
@@ -53,22 +54,47 @@ function BotaoUsuario({ perfil, navigation }) {
 // Função principal HOME.
 // Percorre um banco de dados DATA de perfils e cria uma Flatlist a partir dela. Cada elemento da flatlist é criado
 // pela função BotaoUsuario.
-//
-export default function HomeScreen({navigation,item}){  return (
+
+
+
+
+export default class HomeScreen extends React.Component{
+	constructor(props) {
+    	super(props);
+    	this.state ={}
+  	}
+	componentDidMount(){
+		this.lerAlunos();
+	}
+
+
+	//Ler alunos no BD
+	lerAlunos = async () =>  {
+    console.log("entrou")
+    let name = await AsyncStorage.getItem('MasterBD');
+    if (name!=null){
+      name=JSON.parse(name)
+      this.setState(name)
+	}
+	}
+
+	render( ){
+	return (
 	<SafeAreaView style={styles.container,{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
 		<FlatList 
-			data={DATA}
-			renderItem={({ item }) => <BotaoUsuario perfil={item} navigation={navigation}/>}
+			data={Object.values(this.state)}
+			renderItem={({ item }) => <BotaoUsuario perfil={item} navigation={this.props.navigation}/>}
 			keyExtractor={item => item.id}
 		/>
 
-
+	<Text>{this.state.message}</Text>
 	<Button
 		title="Adicionar Perfil Novo"
-		onPress={() => navigation.navigate('Editor',{perfilAluno:perfilAluno_vazio,})}
+		onPress={() => this.props.navigation.navigate('Editor',{perfilAluno:perfilAluno_vazio,})}
 	/>
+
 	</SafeAreaView>
-  );
+  );}
 }
 
 const styles = StyleSheet.create({

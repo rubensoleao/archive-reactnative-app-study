@@ -59,14 +59,7 @@ export  const gravarAluno = async (perfilAluno) => {
 }
 
 
-export  const lerAlunos = async ()=> {
-    try {
-      var value = await AsyncStorage.getItem(masterKey);
-      return(JSON.parse(value))
-    } catch (error) {
-      console.log("Error retrieving data" + error);
-    }
-}
+
 
 export const initDB = async ()=> {
 	const dbInicial = {aluno_xxasdasdas:{id:'aluno_xxasdasdas',Nome: 'Antonio José Munia',DataNascimento:'22/05/1999', Cidade: 'São Jõao do Mato verde' , Ano: '1', Rua:'Rua José Pereira Manuel Antonio',Numero:'12',Complemento:'FRENTE',Bairro:'Jd. Primavera',Cidade:'São jõao do Mato Bento',Estado:'SP', CEP:'150599', NomeDaMae:'Maria Julia Casanova',CPFdaMae:'364.123.123-12',DataPagamento:'5',
