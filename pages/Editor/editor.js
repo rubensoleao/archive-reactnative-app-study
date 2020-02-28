@@ -12,7 +12,8 @@ import {StyleSheet,
 		ScrollView,
 		TextInput,
 		KeyboardAvoidingView,
-		SafeAreaView
+		SafeAreaView,
+		TouchableHighlight
 		} from 'react-native';
 
 import {gravarAluno} from '../../src/bd';
@@ -27,7 +28,6 @@ export default function  DetailsScreen({route,navigation}) {
 	return (
 	<KeyboardAvoidingView style={styles.conteiner} behavior="padding">
 		<ScrollView>
-			<Text style={[styles.largeText, styles.textStyle]}> Cadastro de Alunos</Text>
 
 			<Formik 
 			enableReinitialize
@@ -36,144 +36,191 @@ export default function  DetailsScreen({route,navigation}) {
 			>
 
 			{({ values, handleChange, handleSubmit, isValid,errors,touched}) => (
-			<View>
+			<View style={styles.containerForm}>
+
+				<Text style={styles.textInput} >
+					Nome do Aluno
+				</Text>
 				<View style={styles.conteinerTextInput}>
 					<TextInput
-					placeholder={"Nome"} 
+					placeholder={"Nome Completo"} 
 					value={values.Nome}
 					onChangeText={handleChange('Nome')}		
-					placeholderTextColor="white"
+					placeholderTextColor="#AAA"
 					style={styles.textInput}
 					/>
 				</View>
 
+				<Text style={styles.textInput} >
+					Ano do Colégio
+				</Text>
 				<View style={styles.conteinerTextInput}>
 					<TextInput
-					placeholder={"Ano do Colégio"} 
+					placeholder={"1o ao 9o"} 
 					value={values.Ano}
 					onChangeText={handleChange('Ano')}		
-					placeholderTextColor="white"
+					placeholderTextColor="#AAA"
 					style={styles.textInput}
 					/>
 				</View>
 
 
+				<Text style={styles.textInput} >
+					Data de Nascimento
+				</Text>
 				<View style={styles.conteinerTextInput}>
 					<TextInput
-					placeholder={"Data de Nascimento"} 
+					placeholder={"DD/MM/AAAA"} 
 					value={values.DataNascimento}
 					onChangeText={handleChange('DataNascimento')}
-					placeholderTextColor="white"
+					placeholderTextColor="#AAA"
 					style={styles.textInput}
 					/>
 				</View>
 
+				<Text style={styles.textInput} >
+					CEP
+				</Text>
 				<View style={styles.conteinerTextInput}>
 					<TextInput
 					placeholder={"CEP"} 
 					value={values.CEP}
 					onChangeText={handleChange('CEP')}
-					placeholderTextColor="white"
+					placeholderTextColor="#AAA"
 					style={styles.textInput}
 					/>
 				</View>
 
+				<Text style={styles.textInput} >
+					Rua
+				</Text>
 				<View style={styles.conteinerTextInput}>
 					<TextInput
 					placeholder={"Rua"} 
 					value={values.Rua}
 					onChangeText={handleChange('Rua')}
-					placeholderTextColor="white"
+					placeholderTextColor="#AAA"
 					style={styles.textInput}
 					/>
 				</View>
 
+				<Text style={styles.textInput} >
+					Numero
+				</Text>
 				<View style={styles.conteinerTextInput}>
 					<TextInput
-					placeholder={"Numero"} 
+					placeholder={"Numero Residencia"} 
 					value={values.Numero}
 					onChangeText={handleChange('Numero')}
-					placeholderTextColor="white"
+					placeholderTextColor="#AAA"
 					style={styles.textInput}
 					/>
 				</View>
 
+				<Text style={styles.textInput} >
+					Complemento
+				</Text>
 				<View style={styles.conteinerTextInput}>
 					<TextInput
 					placeholder={"Complemento"} 
 					value={values.Complemento}
 					onChangeText={handleChange('Complemento')}
-					placeholderTextColor="white"
+					placeholderTextColor="#AAA"
 					style={styles.textInput}
 					/>
 				</View>
 
+				<Text style={styles.textInput} >
+					Bairro
+				</Text>
 				<View style={styles.conteinerTextInput}>
 					<TextInput
 					placeholder={"Bairro"} 
 					value={values.Bairro}
 					onChangeText={handleChange('Bairro')}
-					placeholderTextColor="white"
+					placeholderTextColor="#AAA"
 					style={styles.textInput}
 					/>
 				</View>
 
+				<Text style={styles.textInput} >
+					Cidade
+				</Text>
 				<View style={styles.conteinerTextInput}>
 					<TextInput
 					placeholder={"Cidade"} 
 					value={values.Cidade}
 					onChangeText={handleChange('Cidade')}
-					placeholderTextColor="white"
+					placeholderTextColor="#AAA"
 					style={styles.textInput}
 					/>
 				</View>
 
+				<Text style={styles.textInput} >
+					Estado
+				</Text>
 				<View style={styles.conteinerTextInput}>
 					<TextInput
 					placeholder={"Estado"} 
 					value={values.Estado}
 					onChangeText={handleChange('Estado')}
-					placeholderTextColor="white"
+					placeholderTextColor="#AAA"
 					style={styles.textInput}
 					/>
 				</View>
 
+				<Text style={styles.textInput} >
+					Nome Da Mãe
+				</Text>
 				<View style={styles.conteinerTextInput}>
 					<TextInput
-					placeholder={"Nome da Mãe"} 
+					placeholder={"Nome Completo"} 
 					value={values.NomeDaMae}
 					onChangeText={handleChange('NomeDaMae')}
-					placeholderTextColor="white"
+					placeholderTextColor="#AAA"
 					style={styles.textInput}
 					/>
 				</View>
 
+
+				<Text style={styles.textInput} >
+					CPF Da Mãe
+				</Text>
 				<View style={styles.conteinerTextInput}>
 					<TextInput
 					placeholder={"CPF da Mãe"} 
 					value={values.CPFdaMae}
 					onChangeText={handleChange('CPFdaMae')}
-					placeholderTextColor="white"
+					placeholderTextColor="#AAA"
 					style={styles.textInput}
 					/>
 				</View>
 
 
-
+				<Text style={styles.textInput} >
+					Data Preferencial de Pagamento
+				</Text>
 				<View style={styles.conteinerTextInput}>
 					<TextInput
 					placeholder={"Data Preferencial de Pagamento"} 
 					value={values.DataPagamento}
 					onChangeText={handleChange('DataPagamento')}
-					placeholderTextColor="white"
+					placeholderTextColor="#AAA"
 					style={styles.textInput}
 					/>
 				</View>
 
-
-				<Button title='Cadastrar Aluno'  
+				<View style={{marginTop:30}}>
+				<TouchableHighlight 
+				style={styles.button}
 				onPress={handleSubmit}
-				/>
+				>
+				<Text style={styles.buttonText}>
+				Cadastrar Aluno
+				</Text>
+				</TouchableHighlight>
+				</View>
+
 			</View>)}
 			
 		</Formik>
@@ -187,19 +234,33 @@ export default function  DetailsScreen({route,navigation}) {
 const styles = StyleSheet.create({
 conteiner: {
 flex: 1,
-backgroundColor: 'white',
+backgroundColor: '#EEE',
+},
+containerForm: {
+	paddingHorizontal: 40,
 },
 conteinerTextInput: {
 height: 40,
-marginTop: 20,
-backgroundColor: '#6685B3',
-marginHorizontal: 40,
+marginTop: 10,
+backgroundColor: 'white',
 paddingHorizontal: 10,
 borderRadius: 5,
+height: 40,
+borderWidth:.2,
+
+shadowColor: "#000",
+shadowOffset: {
+	width: 0,
+height: 3,
+},
+shadowOpacity: 0.27,
+shadowRadius: 2.65,
+elevation: 6,
 },
 textInput: {
-marginTop:5,
-color: 'white',
+marginTop:
+5,
+color: '#000',
 fontWeight: 'bold',
 },  
 textStyle: {
@@ -213,5 +274,28 @@ tinyText: {
 
 fontSize: 11,
 textAlign:'left',
-}
+},button:{
+		height: 40,
+		paddingHorizontal: 10,
+		alignContent:'center',
+		borderRadius: 10,
+		justifyContent:'center',
+		alignContent:'center',
+		backgroundColor:'#00675b',
+		marginBottom:36,
+		marginHorizontal:36,
+		shadowColor: "#000",
+		shadowOffset: {
+			width: 0,
+			height: 3,
+		},
+		shadowOpacity: 0.27,
+		shadowRadius: 2.65,
+		elevation: 6,
+	},buttonText:{
+		color:'#FFF',
+		fontWeight: 'bold',
+		fontSize: 16,
+		textAlign:'center',
+	},
 });

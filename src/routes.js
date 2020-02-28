@@ -13,14 +13,27 @@ import EditorScreen from '../pages/Editor/editor'
 import PerfilUsuarioScreen from '../pages/PerfilUsuario/perfilUsuario'
 
 
-
 const Stack = createStackNavigator();
 export default function Routes(){
 	return (
 
-		<Stack.Navigator initialRouteName="Home">
-			<Stack.Screen name="Home" component={HomeScreen} />
-			<Stack.Screen name="Editor" component={EditorScreen} />
+		<Stack.Navigator initialRouteName="Home"
+	        screenOptions={{
+		        headerStyle: {
+		          backgroundColor: '#009688',
+
+		        },
+		        headerTintColor: '#fff',
+		        headerTitleStyle: {
+		          color:'#000',
+		        },
+		      }}
+
+		>
+			<Stack.Screen name="Home" 
+			 	component={HomeScreen} options={{title: '🏫 Alunos'}}/>
+			<Stack.Screen name="Editor" component={EditorScreen} 
+			component={EditorScreen} options={{title: 'Editar Cadastro de Aluno'}} />
 			<Stack.Screen name="PerfilUsuario" component={PerfilUsuarioScreen} />
 		</Stack.Navigator>
 

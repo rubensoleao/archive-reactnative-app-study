@@ -11,7 +11,8 @@ import { SafeAreaView,
 		 Text, 
 		 Button,
 		 TouchableHighlight,
-		 AsyncStorage
+		 AsyncStorage,
+		 ScrollView
 		} from 'react-native';
 
 import Constants from 'expo-constants';
@@ -82,39 +83,91 @@ export default class HomeScreen extends React.Component{
 	}
 
 	render( ){
-		console.log('rendered')
-	return (
-		<SafeAreaView style={styles.container,{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-			
-			<FlatList 
-				data={this.state.db}
-				renderItem={({ item }) => <BotaoUsuario perfil={item} navigation={this.props.navigation}/>}
-				keyExtractor={item => item.id}
-			/>
+		return (
+			<SafeAreaView style={styles.container}>
+					<ScrollView>
 
-			<Button
-				title="Adicionar Perfil Novo"
+
+						{/*Flatlist imprime lista de Usuários*/} 
+						<View style={styles.conteinerListaAlunos}>
+							<FlatList 
+								data={this.state.db}
+								renderItem={({ item }) => <BotaoUsuario perfil={item} navigation={this.props.navigation}/>}
+								keyExtractor={item => item.id}
+							/>
+						</View>
+
+
+					</ScrollView>
+
+
+				<TouchableHighlight 
+				style={styles.button}
 				onPress={() => this.props.navigation.navigate('Editor',{perfilAluno:perfilAluno_vazio,})}
-			/>
+				>
+				<Text style={styles.buttonText}>
+				Cadastrar Aluno
+				</Text>
+				</TouchableHighlight>
 
-		</SafeAreaView>
-	  );}
+			</SafeAreaView>
+		);
+	}
 }
+
 
 const styles = StyleSheet.create({
   container: {
-	flex: 1,
-	marginTop: Constants.statusBarHeight,
+		flex: 1,
+		marginTop: Constants.statusBarHeight,
   },
+  conteinerListaAlunos:{
+  	flex:1,
+  	alignSelf: 'center',
+  	minWidth:'96%',
+  	padding: 3,
+	},
   item: {
-	backgroundColor: '#DDDDDD',
-	paddingVertical:5,
-	paddingHorizontal:10,
-	marginVertical: 4,
-	marginHorizontal: 2,
-	borderRadius: 3,
+		backgroundColor: 'white',
+		paddingVertical:5,
+		paddingHorizontal:10,
+		marginVertical: 5,
+		
+		
+		shadowColor: "#000",
+		shadowOffset: {
+			width: 10,
+			height: 1,
+		},
+		shadowOpacity: 0.43,
+		shadowRadius: 0.62,
+		elevation: 2,
   },
   textoUsuario: {
-	fontSize: 22,
+		fontSize: 20,
   },
+	button:{
+		height: 40,
+		paddingHorizontal: 10,
+		alignContent:'center',
+		borderRadius: 10,
+		justifyContent:'center',
+		alignContent:'center',
+		backgroundColor:'#00675b',
+		marginBottom:36,
+		marginHorizontal:72,
+		shadowColor: "#000",
+		shadowOffset: {
+			width: 0,
+			height: 3,
+		},
+		shadowOpacity: 0.27,
+		shadowRadius: 2.65,
+		elevation: 6,
+	},buttonText:{
+		color:'#FFF',
+		fontWeight: 'bold',
+		fontSize: 16,
+		textAlign:'center',
+	},
 });

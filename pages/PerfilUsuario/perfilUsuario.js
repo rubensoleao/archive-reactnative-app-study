@@ -2,10 +2,13 @@ import React from 'react';
 import { StyleSheet,
          Text,
          View,
-         Button } from 'react-native';
+         Button,
+         SafeAreaView,
+         ScrollView,
+         TouchableHighlight } from 'react-native';
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 import {removerAluno} from '../../src/bd';
-
+import { Ionicons } from '@expo/vector-icons';
 
 
 
@@ -25,8 +28,8 @@ export default function PerfilperfilAlunoScreen({route,navigation}){
 
 
 	return (
-		<View style={{flex:1}}>
-		<View style={styles.conteiner}>
+		<SafeAreaView style={styles.container}>
+			<ScrollView style={styles.scrollContainer}>
 		
 		<Text style={styles.nome}>{perfilAluno.Nome}</Text>
 		<Text style={styles.Text}>{perfilAluno.Ano}º Ano</Text>
@@ -55,70 +58,117 @@ export default function PerfilperfilAlunoScreen({route,navigation}){
 			<Text >{perfilAluno.Bairro} </Text>
 			<Text >{perfilAluno.Cidade}, {perfilAluno.Estado}  </Text>
 		</View>
-		</View >
 
 
-		<View style={styles.bottomConteiner}>
-		<View style={styles.botaoDeletar}>
-			<Button 
-				color='red'
-				title="Deletar Perfil"
+		</ScrollView>
+
+		<View style={styles.horizontalContainer}> 
+
+			<View style={{flex:5}}>
+			<TouchableHighlight 
+				style={styles.botaoDeletar}
 				onPress={()=>{removerAluno(idAluno);navigation.popToTop()}}
-				
-			/>
-		</View>
+			>
+				<Text style={{textAlign:'center'}} >
+					<Ionicons name="ios-trash" size={32} color="#FFF" align='center' />
 
+				</Text>
 
-		<View style={styles.botaoEditar}>
-			<Button
-				title="Editar Perfil"
+			</TouchableHighlight>
+			</View>
+
+			<View style={{flex:10}}>
+			<TouchableHighlight 
+				style={styles.botaoEditar}
 				onPress={() => navigation.navigate('Editor',{perfilAluno})}
-			/>
-		</View>
+			>
+			<Text style={styles.buttonText}>
+				Editar Perfil
+			</Text>
+			</TouchableHighlight>
+			</View>
 
 		</View>
-		</View>
+
+
+		</SafeAreaView>
 	);
 }
 
 
 const styles = StyleSheet.create({
-		conteiner: {
-		flexDirection:'column',
-		
-		backgroundColor: 'white',
-
-		paddingVertical: 1,
-
-	},leftConteiner: {
+	container:{
+		flex:1,
 		backgroundColor: '#EEE',
-		alignItems: 'flex-start',
+	},
+	scrollContainer: {
+		marginHorizontal:10,
+	},
+	leftConteiner: {
+		backgroundColor: 'white',
 		marginHorizontal: 30,
 		padding:5,
 	},
+	horizontalContainer:{
+		marginHorizontal:30,
+		flexDirection:'row',
 
-		nome:{
+	},
+	nome:{
 		fontSize: 22,
 		flexWrap:'wrap',
 	},
-		Text:{
+	Text:{
 		fontSize: 16,
 	},
-
-	horizontalConteiner:{
-		flexDirection:'row',
-		backgroundColor: '#DDD',
-	},
 	botaoDeletar:{
-	    
-		margin: 5,
-	},botaoEditar:{
-		margin: 5,
+		height: 40,
+		paddingHorizontal: 10,
+		borderRadius: 10,
+		justifyContent:'center',
+		alignContent:'center',
+		backgroundColor:'red',
+		marginRight:6,
 		marginBottom:36,
+		shadowColor: "#000",
+		shadowOffset: {
+			width: 0,
+			height: 3,
+		},
+		shadowOpacity: 0.27,
+		shadowRadius: 2.65,
+		elevation: 6,
+
+	},botaoEditar:{
+		height: 40,
+		paddingHorizontal: 10,
+		alignContent:'center',
+		borderRadius: 10,
+		justifyContent:'center',
+		alignContent:'center',
+		backgroundColor:'#00675b',
+		marginBottom:36,
+
+
+
+		shadowColor: "#000",
+		shadowOffset: {
+			width: 0,
+			height: 3,
+		},
+		shadowOpacity: 0.27,
+		shadowRadius: 2.65,
+		elevation: 6,
 	},
-	bottomConteiner:{
+	buttonText:{
+		color:'#FFF',
+		fontWeight: 'bold',
+		fontSize: 16,
+		textAlign:'center',
+	},
+	bottomContainer:{
 		flex:1,
 		justifyContent: 'flex-end',
-
-}
+		marginBottom:6,
+	}
 })
