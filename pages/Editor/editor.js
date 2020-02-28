@@ -21,6 +21,10 @@ import {gravarAluno} from '../../src/bd';
 //Biblioteca Formic usado para preenchimento de dados
 import { Formik } from 'formik';
 
+import {validacaoEditor} from './validacao.js'
+import * as yup from 'yup'
+
+
 
 export default function  DetailsScreen({route,navigation}) {
 	const {perfilAluno} = route.params;
@@ -30,9 +34,10 @@ export default function  DetailsScreen({route,navigation}) {
 		<ScrollView>
 
 			<Formik 
-			enableReinitialize
-			initialValues={perfilAluno} 
-			onSubmit={values => {gravarAluno(values);  navigation.popToTop()}}
+				enableReinitialize
+				initialValues={perfilAluno} 
+				onSubmit={values => {gravarAluno(values);  navigation.popToTop()}}
+				validationSchema={validacaoEditor}
 			>
 
 			{({ values, handleChange, handleSubmit, isValid,errors,touched}) => (
@@ -211,14 +216,14 @@ export default function  DetailsScreen({route,navigation}) {
 				</View>
 
 				<View style={{marginTop:30}}>
-				<TouchableHighlight 
-				style={styles.button}
-				onPress={handleSubmit}
-				>
-				<Text style={styles.buttonText}>
-				Cadastrar Aluno
-				</Text>
-				</TouchableHighlight>
+					<TouchableHighlight 
+						style={isValid ? styles.button :  styles.buttonInvalido}
+						onPress={handleSubmit}
+					>
+						<Text style={styles.buttonText}>
+							Cadastrar Aluno
+						</Text>
+					</TouchableHighlight>
 				</View>
 
 			</View>)}
@@ -240,18 +245,18 @@ containerForm: {
 	paddingHorizontal: 40,
 },
 conteinerTextInput: {
-height: 40,
-marginTop: 10,
-backgroundColor: 'white',
-paddingHorizontal: 10,
-borderRadius: 5,
-height: 40,
-borderWidth:.2,
+	height: 40,
+	marginTop: 10,
+	backgroundColor: 'white',
+	paddingHorizontal: 10,
+	borderRadius: 5,
+	height: 40,
+	borderWidth:.2,
 
-shadowColor: "#000",
-shadowOffset: {
-	width: 0,
-height: 3,
+	shadowColor: "#000",
+	shadowOffset: {
+		width: 0,
+	height: 3,
 },
 shadowOpacity: 0.27,
 shadowRadius: 2.65,
@@ -297,5 +302,24 @@ textAlign:'left',
 		fontWeight: 'bold',
 		fontSize: 16,
 		textAlign:'center',
+	},
+	buttonInvalido:{
+	height: 40,
+		paddingHorizontal: 10,
+		alignContent:'center',
+		borderRadius: 10,
+		justifyContent:'center',
+		alignContent:'center',
+		marginBottom:36,
+		marginHorizontal:36,
+		shadowColor: "#000",
+		shadowOffset: {
+			width: 0,
+			height: 3,
+		},
+		shadowOpacity: 0.27,
+		shadowRadius: 2.65,
+		elevation: 6,
+		backgroundColor:'#52c7b8',
 	},
 });
