@@ -19,7 +19,6 @@ import Constants from 'expo-constants';
 
 import {lerAlunos} from '../../src/bd'
 
-import { COLOR, ThemeContext, getTheme } from 'react-native-material-ui';
 
 
 //Varíavel utilizado para passar um perfil de aluno
