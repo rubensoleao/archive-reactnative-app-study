@@ -55,6 +55,9 @@ export default function  DetailsScreen({route,navigation}) {
 					style={styles.textInput}
 					/>
 				</View>
+				{touched.Nome && errors.Nome &&
+				<Text style={styles.textErroForm}>{errors.Nome}</Text>}
+
 
 				<Text style={styles.textInput} >
 					Ano do Colégio
@@ -68,6 +71,8 @@ export default function  DetailsScreen({route,navigation}) {
 					style={styles.textInput}
 					/>
 				</View>
+				{touched.Ano && errors.Ano &&
+				<Text style={styles.textErroForm}>{errors.Ano}</Text>}
 
 
 				<Text style={styles.textInput} >
@@ -82,6 +87,8 @@ export default function  DetailsScreen({route,navigation}) {
 					style={styles.textInput}
 					/>
 				</View>
+				{touched.DataNascimento && errors.DataNascimento &&
+				<Text style={styles.textErroForm}>{errors.DataNascimento}</Text>}
 
 				<Text style={styles.textInput} >
 					CEP
@@ -95,6 +102,8 @@ export default function  DetailsScreen({route,navigation}) {
 					style={styles.textInput}
 					/>
 				</View>
+				{touched.CEP && errors.CEP &&
+				<Text style={styles.textErroForm}>{errors.CEP}</Text>}
 
 				<Text style={styles.textInput} >
 					Rua
@@ -108,6 +117,8 @@ export default function  DetailsScreen({route,navigation}) {
 					style={styles.textInput}
 					/>
 				</View>
+				{touched.Rua && errors.Rua &&
+				<Text style={styles.textErroForm}>{errors.Rua}</Text>}
 
 				<Text style={styles.textInput} >
 					Numero
@@ -121,6 +132,8 @@ export default function  DetailsScreen({route,navigation}) {
 					style={styles.textInput}
 					/>
 				</View>
+				{touched.Numero && errors.Numero &&
+				<Text style={styles.textErroForm}>{errors.Numero}</Text>}
 
 				<Text style={styles.textInput} >
 					Complemento
@@ -134,6 +147,8 @@ export default function  DetailsScreen({route,navigation}) {
 					style={styles.textInput}
 					/>
 				</View>
+				{touched.Complemento && errors.Complemento &&
+				<Text style={styles.textErroForm}>{errors.Complemento}</Text>}
 
 				<Text style={styles.textInput} >
 					Bairro
@@ -147,6 +162,8 @@ export default function  DetailsScreen({route,navigation}) {
 					style={styles.textInput}
 					/>
 				</View>
+				{touched.Bairro && errors.Bairro &&
+				<Text style={styles.textErroForm}>{errors.Bairro}</Text>}
 
 				<Text style={styles.textInput} >
 					Cidade
@@ -160,6 +177,8 @@ export default function  DetailsScreen({route,navigation}) {
 					style={styles.textInput}
 					/>
 				</View>
+				{touched.Cidade && errors.Cidade &&
+				<Text style={styles.textErroForm}>{errors.Cidade}</Text>}
 
 				<Text style={styles.textInput} >
 					Estado
@@ -173,6 +192,8 @@ export default function  DetailsScreen({route,navigation}) {
 					style={styles.textInput}
 					/>
 				</View>
+				{touched.Estado && errors.Estado &&
+				<Text style={styles.textErroForm}>{errors.Estado}</Text>}
 
 				<Text style={styles.textInput} >
 					Nome Da Mãe
@@ -186,6 +207,8 @@ export default function  DetailsScreen({route,navigation}) {
 					style={styles.textInput}
 					/>
 				</View>
+				{touched.NomeDaMae && errors.NomeDaMae &&
+				<Text style={styles.textErroForm}>{errors.NomeDaMae}</Text>}
 
 
 				<Text style={styles.textInput} >
@@ -200,6 +223,8 @@ export default function  DetailsScreen({route,navigation}) {
 					style={styles.textInput}
 					/>
 				</View>
+				{touched.CPFdaMae && errors.CPFdaMae &&
+				<Text style={styles.textErroForm}>{errors.CPFdaMae}</Text>}
 
 
 				<Text style={styles.textInput} >
@@ -214,6 +239,8 @@ export default function  DetailsScreen({route,navigation}) {
 					style={styles.textInput}
 					/>
 				</View>
+				{touched.DataPagamento && errors.DataPagamento &&
+				<Text style={styles.textErroForm}>{errors.DataPagamento}</Text>}
 
 				<View style={{marginTop:30}}>
 					<TouchableHighlight 
@@ -321,5 +348,9 @@ textAlign:'left',
 		shadowRadius: 2.65,
 		elevation: 6,
 		backgroundColor:'#52c7b8',
+	},
+	textErroForm:{
+		fontSize: 10,
+		color: 'red'
 	},
 });
